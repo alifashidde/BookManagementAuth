@@ -1,0 +1,71 @@
+﻿@using BookManagementAuth.ViewModels
+
+@{
+    ViewData["Title"] = "Account Locked Out";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Ensure this points to your layout file
+}
+
+<style>
+    /* Main container for the lockout message */
+    .lockout-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; /* Full height for vertical centering */
+        background-color: #f8f9fa; /* Light background */
+        text-align: center; /* Center align text */
+        padding: 20px; /* Padding for content */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        border-radius: 10px; /* Rounded corners */
+        margin: 0 auto; /* Center the container horizontally */
+        max-width: 400px; /* Limit width for better appearance */
+    }
+
+    .lockout-header {
+        font-size: 2rem; /* Larger font size for header */
+        color: #dc3545; /* Bootstrap danger color */
+        margin-bottom: 20px; /* Space below header */
+    }
+
+    .lockout-message {
+        font-size: 1.25rem; /* Slightly larger font for the main message */
+        color: #343a40; /* Bootstrap dark color */
+        margin-bottom: 30px; /* Space below message */
+    }
+
+    .lockout-instructions {
+        font-size: 1rem; /* Standard font size for instructions */
+        color: #6c757d; /* Bootstrap muted color */
+        margin-bottom: 20px; /* Space below instructions */
+    }
+
+    .btn {
+        background-color: #007bff; /* Bootstrap primary color */
+        color: white; /* Text color for the button */
+        padding: 10px 20px; /* Padding for button */
+        border: none; /* Remove border */
+        border-radius: 5px; /* Rounded corners */
+        text-decoration: none; /* Remove underline */
+        transition: background-color 0.3s; /* Transition effect for hover */
+        width: 100%; /* Full-width button */
+        font-size: 1rem; /* Consistent font size */
+    }
+
+        .btn:hover {
+            background-color: #0056b3; /* Darker shade for hover effect */
+        }
+</style>
+
+<div class="lockout-container">
+    <div class="lockout-header">
+        Your Account is Locked Out
+    </div>
+    <div class="lockout-message">
+        Unfortunately, your account has been temporarily locked due to multiple failed login attempts. Please try again later.
+    </div>
+    <div class="lockout-instructions">
+        If you believe this is a mistake, please contact support or try again after some time.
+    </div>
+    <a class="btn" asp-controller="Account" asp-action="Login">Back to Login</a>
+</div>

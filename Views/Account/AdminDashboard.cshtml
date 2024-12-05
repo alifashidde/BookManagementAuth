@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>User Management</h2>
+            <p>Manage users, roles, and permissions.</p>
+            <a href="@Url.Action("ManageUsers", "Account")" class="btn btn-primary">Go to User Management</a>
+        </div>
+        <div class="col-md-4">
+            <h2>Content Management</h2>
+            <p>Manage the content of the application.</p>
+            <a href="@Url.Action("ManageContent", "Admin")" class="btn btn-primary">Go to Content Management</a>
+        </div>
+        
+    </div>
+</div>

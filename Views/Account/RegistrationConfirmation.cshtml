@@ -1,0 +1,16 @@
+﻿@model BookManagementAuth.Models.RegistrationConfirmationViewModel
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card p-4 shadow-sm" style="width: 400px;">
+        <h2 class="text-center mb-4">Registration Successful</h2>
+        <div class="alert alert-info text-center">
+            A confirmation email has been sent to @Model.Email. Please check your email to confirm your account.
+        </div>
+        <div class="text-center mt-3">
+            <form asp-action="ResendEmailConfirmation" method="get">
+                <input type="hidden" name="email" value="@Model.Email" />
+                <button type="submit" class="btn btn-primary">Resend Email</button>
+            </form>
+        </div>
+    </div>
+</div>

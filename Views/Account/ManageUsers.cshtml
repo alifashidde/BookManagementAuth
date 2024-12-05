@@ -1,0 +1,31 @@
+﻿@model BookManagementAuth.ViewModels.ManageUsersViewModel
+
+<h2>Manage Users</h2>
+
+<!-- Add a "Create User" button that links to the Create action -->
+<a href="@Url.Action("Create", "Account")" class="btn btn-primary">Create User</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>UserName</th> <!-- Add this column for UserName -->
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var userWithRoles in Model.Users)
+        {
+            <tr>
+                <td>@userWithRoles.User.Email</td>
+                <td>@userWithRoles.UserName</td> <!-- Display the UserName here -->
+                <td>@string.Join(", ", userWithRoles.Roles)</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Account", new { id = userWithRoles.User.Id })">Edit</a> |
+                    <a href="@Url.Action("DeleteConfirmation", "Account", new { id = userWithRoles.User.Id })">Delete</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

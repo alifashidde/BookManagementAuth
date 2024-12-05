@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container">
+    <h1>Dashboard</h1>
+    <p>Welcome to your unique dashboard!</p>
+
+    <div class="mt-4">
+        <h2>Manage Your Account</h2>
+        <ul>
+            <li>
+                <a class="nav-link" href="@Url.Action("ManageMFA", "Account")">Manage MFA</a>
+            </li>
+            <li>
+                <form asp-action="Logout" asp-controller="Account" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>

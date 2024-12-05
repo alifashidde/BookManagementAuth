@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Email Confirmed";
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card p-4 shadow-sm" style="width: 400px;">
+        <h2 class="text-center text-success mb-4">Email Confirmed!</h2>
+        <p class="text-center">Thank you for confirming your email address. You can now log in to your account.</p>
+        <div class="text-center mt-4">
+            <a href="@Url.Action("Login", "Account")" class="btn btn-primary">Go to Login</a>
+        </div>
+    </div>
+</div>

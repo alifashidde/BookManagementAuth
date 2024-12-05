@@ -1,0 +1,44 @@
+﻿@model BookManagementAuth.Models.LoginViewModel
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card p-4 shadow-sm" style="width: 400px;">
+
+        <h2 class="text-center mb-4">Sign In</h2>
+
+        <!-- Validation Summary -->
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <form asp-action="Login" method="post">
+            <!-- Email Field -->
+            <div class="form-group">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group mt-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" placeholder="Enter your password" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <!-- Remember Me Field -->
+            <div class="form-group form-check mt-3">
+                <input asp-for="RememberMe" class="form-check-input" type="checkbox" />
+                <label asp-for="RememberMe" class="form-check-label">Remember me</label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block mt-4">Sign In</button>
+
+            <!-- Links -->
+            <p class="text-center mt-3">
+                Don't have an account? <a href="@Url.Action("Register", "Account")">Sign Up</a>
+            </p>
+            <p class="text-center">
+                <a href="@Url.Action("ForgotPassword", "Account")">Forgot your password?</a>
+            </p>
+        </form>
+    </div>
+</div>

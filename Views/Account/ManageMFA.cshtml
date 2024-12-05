@@ -1,0 +1,14 @@
+﻿@model BookManagementAuth.ViewModels.ManageMFAViewModel
+
+@{
+    ViewData["Title"] = "Manage Multi-Factor Authentication";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>Enable Multi-Factor Authentication (MFA) for enhanced security on your account.</p>
+
+<form asp-action="EnableMFA" method="post">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Enable MFA</button>
+</form>

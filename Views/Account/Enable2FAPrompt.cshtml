@@ -1,0 +1,31 @@
+﻿@model Enable2FAPromptViewModel
+
+@{
+    var jwtToken = TempData["JwtToken"]?.ToString();
+    var userId = TempData["UserId"]?.ToString();
+}
+
+<h2>Multi-Factor Authentication Notice</h2>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Show a confirmation popup when the page loads
+        var userResponse = confirm("Would you like to enable Two-Factor Authentication (2FA) for added security?");
+
+        // If the user clicks "OK", redirect them to enable 2FA
+        if (userResponse) {
+            var userId = '@Html.Raw(userId)'; // Ensure userId is available for redirection
+            window.location.href = '@Url.Action("Enable2FA", "Account", new { userId = userId })';
+        }
+        // If the user clicks "Cancel", redirect based on role
+        else {
+            if (@Model.IsAdmin) {
+                window.location.href = "https://localhost:7018/Account/AdminDashboard?token=" + '@jwtToken';
+            } else {
+                window.location.href = "https://localhost:7018/Home/Index?token=" + '@jwtToken';
+            }
+        }
+    });
+</script>
+
+<p>Redirecting...</p>

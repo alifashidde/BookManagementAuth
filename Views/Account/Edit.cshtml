@@ -1,0 +1,20 @@
+﻿@model BookManagementAuth.ViewModels.EditUserViewModel
+
+<h2>Edit User</h2>
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <!-- Add the UserName input field here -->
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save changes</button>
+</form>

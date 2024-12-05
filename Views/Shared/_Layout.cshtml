@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookManagementAuth</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdXDpT6bXf0jIgJUkXtVZ0e1+j5GJw9Ib9FlzZZ85ReKhk+IohPU1X/b7yZdN0" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Jut8jIbfjg5Pyv5eYIJR+5dv3p3CR6uZVXV2g+eFj2bqh/ZJRsae2gDl" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">BookManagementAuth</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    @* Show buttons if the user is not authenticated *@
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary mr-2" href="@Url.Action("Login", "Account")">Sign In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-success" href="@Url.Action("Register", "Account")">Sign Up</a>
+                        </li>
+                    }
+                    @* Show Manage MFA and Logout buttons if the user is authenticated *@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("ManageMFA", "Account")">Manage MFA</a>
+                        </li>
+                        <li class="nav-item">
+                            <form asp-action="Logout" asp-controller="Account" method="post" class="form-inline">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-outline-danger">Logout</button>
+                            </form>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+   
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - BookManagementAuth - <a href="@Url.Action("Privacy", "Home")">Privacy</a>
+        </div>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,83 @@
+﻿@model BookManagementAuth.Models.VerifyAuthenticatorCodeViewModel
+
+<h2>Verify Your Account</h2>
+
+<div class="container">
+    <form asp-action="VerifyAuthenticatorCode" method="post" class="form-container">
+        <input type="hidden" asp-for="Provider" />
+        <input type="hidden" asp-for="UserId" />
+
+        <div class="form-group">
+            <label for="VerifyAuthenticatorCode">Verification Code:</label>
+            <input type="text" asp-for="Code" class="form-control" required />
+            <span asp-validation-for="Code" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>
+                <input type="checkbox" asp-for="RememberMe" />
+                Remember Me
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label>
+                <input type="checkbox" asp-for="RememberMachine" />
+                Remember this machine
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Verify</button>
+    </form>
+
+    @if (!ViewData.ModelState.IsValid && ViewData.ModelState.Count > 0)
+    {
+        <div class="text-danger">
+            @foreach (var entry in ViewData.ModelState)
+            {
+                foreach (var error in entry.Value.Errors)
+                {
+                    <div>@error.ErrorMessage</div>
+                }
+            }
+        </div>
+    }
+</div>
+
+<style>
+    /* Center the form on the screen */
+    .container {
+        max-width: 400px; /* Set a max width for the form */
+        margin: 100px auto; /* Center the container with margin */
+        padding: 20px; /* Add some padding */
+        border: 1px solid #ccc; /* Add a border */
+        border-radius: 5px; /* Round the corners */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+        background-color: #fff; /* Background color */
+    }
+
+    h2 {
+        text-align: center; /* Center the heading */
+        margin-bottom: 20px; /* Space below heading */
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column; /* Arrange items vertically */
+    }
+
+    .form-group {
+        margin-bottom: 15px; /* Space between form groups */
+    }
+
+    .btn {
+        width: 100%; /* Full-width button */
+        padding: 10px; /* Button padding */
+        font-size: 16px; /* Button font size */
+    }
+
+    .text-danger {
+        text-align: center; /* Center error messages */
+        margin-top: 10px; /* Space above error messages */
+    }
+</style>
